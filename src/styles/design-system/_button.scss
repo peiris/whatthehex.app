@@ -1,0 +1,10 @@
+// Button styles
+.btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding-right: 16px;
+  padding-left: 16px;
+  height: var(--input-height-default);
+}

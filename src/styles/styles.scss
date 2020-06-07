@@ -1,0 +1,17 @@
+@import './reboot';
+@import './variables';
+@import './design-system/typography';
+@import "./design-system/form-control";
+@import "./design-system/button";
+
+.wrapper {
+  display: flex;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1280px;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}

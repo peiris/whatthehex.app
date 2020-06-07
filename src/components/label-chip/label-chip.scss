@@ -1,0 +1,30 @@
+.label-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__label {
+    padding-top: 4px;
+    padding-right: 26px;
+    padding-bottom: 4px;
+    padding-left: 26px;
+    min-width: 80px;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: rgba(#000000, 0.08);
+    border-radius: 4px;
+
+    .is-mobile & {
+      padding-right: 12px;
+      padding-left: 12px;
+      min-width: 56px;
+    }
+  }
+
+  &__value {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+  }
+}

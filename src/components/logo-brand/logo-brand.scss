@@ -1,0 +1,12 @@
+// Logo brand styles
+.logo-brand {
+  display: flex;
+  padding-top: 140px;
+  margin-bottom: 40px;
+  align-items: center;
+  flex-direction: column;
+
+  &--logo {
+    margin-bottom: 20px;
+  }
+}
