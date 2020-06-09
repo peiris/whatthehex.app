@@ -6,22 +6,23 @@ import LabelChip from './../label-chip/label-chip';
 import Button from './../button/button';
 
 const ColorCard = (props) => {
-  const hex = props.color;
   const isMobile = useMediaQuery({
     query: '(max-device-width: 530px)'
-  })
+  });
+  const colorObj = props.color;
+  const colorType = (colorObj.isExact ? 'Exact color' : 'Closest color');
 
   return (
     <article className="color-card">
       <div className="color-card__top">
-        <ColorChip colorHex={hex} colorName={'Clear Blue'} colorNameType={'Closest name'} />
+        <ColorChip colorHex={colorObj.requested} colorName={colorObj.name} colorNameType={colorType} />
         {!isMobile && <Button />}
       </div>
 
       <div className={`color-card__bottom ${isMobile && 'mb-28'}`}>
-        <LabelChip label={'RGBA'} value={'rgba(77, 81, 101, 1)'} />
-        <LabelChip label={'CSS'} value={'--color-clear-blue: #227BFE'} />
-        <LabelChip label={'SCSS'} value={'$color-clear-blue: #227BFE'} />
+        <LabelChip label={'RGB'} value={`rgb(${colorObj.rgb})`} />
+        <LabelChip label={'CSS'} value={`--color-${colorObj.variable}: ${colorObj.requested}`} />
+        <LabelChip label={'SCSS'} value={`$color-${colorObj.variable}: ${colorObj.requested}`} />
       </div>
 
       {isMobile && <Button isWide={true} />}

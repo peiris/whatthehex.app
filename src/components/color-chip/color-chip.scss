@@ -22,6 +22,7 @@
     &__title {
       margin-bottom: 4px;
       font-size: var(--font-size-xl);
+      text-transform: capitalize;
 
       .is-mobile & {
         font-size: var(--font-size-lg);
