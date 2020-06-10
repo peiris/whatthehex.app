@@ -21,4 +21,33 @@
   &--hero {
     margin-bottom: 12px;
   }
+
+  &--color-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    top: calc(var(--input-height-default) + 20px);
+    z-index: 999;
+    width: 100%;
+  }
+
+  &--overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+  }
+
+  .sketch-picker {
+    box-shadow: -1px 4px 40px 5px rgba(0, 0, 0, 0.06) !important;
+    border: 0 solid var(--form-control-border-color);
+    padding: 16px !important;
+    border-radius: 5px !important;
+    width: 260px !important;
+    box-sizing: border-box !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

@@ -1,12 +1,19 @@
 import React from 'react';
 import './button.scss';
-import { ReactComponent as CopyIcon } from './../../assets/icons/copy.svg';
 
 function Button(props) {
+  let className = 'button';
+  if (props.className) {
+    className += ` ${props.className}`;
+  }
+  if (props.isWide) {
+    className += ` button__wide`;
+  }
+
   return (
-    <button className={`button ${props.isWide && 'button__wide'}`}>
-      <CopyIcon />
-      <span className="button__text">Generate Shades</span>
+    <button onClick={props.onClick} className={className} style={props.style}>
+      {props.icon && <i className={`button__icon ${props.icon}`}></i>}
+      {props.text && <span className="button__text">{props.text}</span>}
     </button>
   )
 }

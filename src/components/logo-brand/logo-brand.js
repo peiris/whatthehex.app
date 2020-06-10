@@ -6,8 +6,8 @@ import { ReactComponent as Logo } from './../../assets/logos/wthlogo.svg';
 const LogoBrand = () => {
   return (
     <section className="logo-brand">
-      <Logo className="logo-brand--logo" />
-      <LogoType />
+      <Logo className="logo-brand--logo" height={60} />
+      <LogoType height={28}/>
     </section>
   );
 }

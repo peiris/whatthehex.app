@@ -18,13 +18,10 @@
   transition: all 0.2s ease;
   cursor: pointer;
 
-  svg {
-    margin-right: 8px;
-
-    fill: currentColor;
-
-    g {
-      stroke: currentColor;
+  &__icon {
+    font-size: var(--font-size-md);
+    & + span {
+      margin-left: 8px;
     }
   }
 
@@ -41,5 +38,17 @@
     color: #000000;
     background-color: #ffffff;
     border-color: #000000;
+  }
+
+  /* Primary color */
+  &--primary {
+    background-color: #0d51ff;
+    color: #ffffff;
+
+    &:hover {
+      color: #0d51ff;
+      background-color: #ffffff;
+      border-color: #0d51ff;
+    }
   }
 }

@@ -6,6 +6,7 @@
     height: 60px;
     background-color: #000000;
     border-radius: 4px;
+    transition: background-color 0.20s ease;
 
     .is-mobile & {
       width: 48px;
@@ -20,8 +21,8 @@
     justify-content: center;
 
     &__title {
-      margin-bottom: 4px;
-      font-size: var(--font-size-xl);
+      margin-bottom: 8px;
+      font-size: var(--font-size-lg);
       text-transform: capitalize;
 
       .is-mobile & {
@@ -31,7 +32,7 @@
 
     &__label {
       font-size: var(--font-size-sm);
-      font-weight: 500;
+      font-weight: 600;
       line-height: 1;
     }
   }
