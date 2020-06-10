@@ -21,13 +21,13 @@
   &__icon {
     font-size: var(--font-size-md);
     & + span {
-      margin-left: 8px;
+      margin-left: 4px;
     }
   }
 
   &__text {
     position: relative;
-    top: -1px;
+    top: 0px;
   }
 
   &__wide {

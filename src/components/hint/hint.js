@@ -6,7 +6,7 @@ const Hint = () => {
   return (
     <label className="hint">
       <HintIcon className="hint--icon" />
-      <span className="hint--label">Type or pick a colour code and press enter</span>
+      <span className="hint--label">Type or pick a color and press enter</span>
     </label>
   );
 }

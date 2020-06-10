@@ -6,6 +6,8 @@ const initialState = {
   selectedColor: null,
   selectedColorObj: null,
   isPickerVisible: false,
+  isCopiedToClipboard: false,
+  clipboardText: null,
   error: null
 };
 

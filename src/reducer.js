@@ -20,6 +20,16 @@ const Reducer = (state, action) => {
         ...state,
         isPickerVisible: action.payload
       };
+    case 'SET_IS_COPIED_TO_CLIPBOARD':
+      return {
+        ...state,
+        isCopiedToClipboard: action.payload
+      };
+    case 'SET_CLIPBOARD_TEXT':
+      return {
+        ...state,
+        clipboardText: action.payload
+      };
     case 'SET_ERROR':
       return {
         ...state,

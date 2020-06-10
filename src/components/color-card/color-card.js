@@ -13,10 +13,6 @@ const ColorCard = (props) => {
   const isMobile = useMediaQuery({
     query: '(max-device-width: 480px)'
   });
-
-  const isLegacyMobile = useMediaQuery({
-    query: '(max-device-width: 320px)'
-  });
   
   const colorObj = state.selectedColorObj;
   const colorType = (colorObj.isExact ? 'Exact color' : 'Closest color');
@@ -38,9 +34,9 @@ const ColorCard = (props) => {
       </div>
 
       <div className={`color-card__bottom ${isMobile && 'mb-28'}`}>
-        <LabelChip isLeftAlign={isLegacyMobile && true} label={'RGB'} value={`rgb(${colorObj.rgb})`} />
-        <LabelChip isLeftAlign={isLegacyMobile && true} label={'CSS'} value={`--color-${colorObj.variable}: ${colorObj.requested}`} />
-        <LabelChip isLeftAlign={isLegacyMobile && true} label={'SCSS'} value={`$color-${colorObj.variable}: ${colorObj.requested}`} />
+        <LabelChip label={'RGB'} value={`rgb(${colorObj.rgb})`} />
+        <LabelChip label={'CSS'} value={`--color-${colorObj.variable}: ${colorObj.requested}`} />
+        <LabelChip label={'SCSS'} value={`$color-${colorObj.variable}: ${colorObj.requested}`} />
       </div>
 
       {isMobile &&

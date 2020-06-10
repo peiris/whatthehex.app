@@ -11,7 +11,7 @@ const LogoBrand = () => {
 
   return (
     <section className="logo-brand">
-      <Logo className="logo-brand--logo" height={isMobile ? 48 : 60} />
+      <Logo className="logo-brand--logo" width={320} height={isMobile ? 48 : 60} />
       <LogoType height={isMobile ? 20 : 28} />
     </section>
   );

@@ -11,7 +11,7 @@ const SearchInput = (props) => {
 
   const handleChangeComplete = (color) => {
     dispatch({ type: 'SET_SELECTED_COLOR', payload: color.hex });
-    dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(inputEl.current.value) });
+    dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(color.hex) });
   };
 
   const _onFormSubmit = e => {
@@ -19,6 +19,7 @@ const SearchInput = (props) => {
     e.persist();
     dispatch({ type: 'SET_SELECTED_COLOR', payload: inputEl.current.value });
     dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(inputEl.current.value) });
+    dispatch({ type: 'SET_PICKER_VISIBILITY', payload: false });
   }
 
   const _onInputChange = value => {

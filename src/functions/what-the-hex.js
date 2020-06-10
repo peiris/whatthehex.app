@@ -83,6 +83,8 @@ function generateColorDetails(hex) {
     let closestColor = findClosestColor(hex);
     let isExact = (closestColor.color === hex) ? true : false;
     let color = Color(hex);
+    let convertSpaceToHyphen = closestColor.name.replace(/\s+/g, '-').toLowerCase();
+    let removeSpecialChars = convertSpaceToHyphen.replace(/[^a-zA-Z-]/g, "");
 
     return {
       requested: hex,
@@ -90,7 +92,7 @@ function generateColorDetails(hex) {
       isExact,
       name: closestColor.name,
       rgb: color.rgb().array(),
-      variable: closestColor.name.replace(/\s+/g, '-').toLowerCase(),
+      variable: removeSpecialChars,
     }
   } else {
     return { message: `Invalid hex code` }

@@ -6,6 +6,8 @@ import { Context } from '../../store';
 import LogoBrand from './../logo-brand/logo-brand';
 import HeroSearch from './../hero-search/hero-search';
 import ColorCard from './../color-card/color-card';
+import './home.scss';
+import Footer from './../footer/footer';
 
 const Home = () => {
   const [state, dispatch] = useContext(Context);
@@ -31,7 +33,7 @@ const Home = () => {
     dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(value) });
   }
 
-  let className = `wrapper`;
+  let className = `home`;
   if (isMobile) {
     className += ` is-mobile`;
   }
@@ -45,6 +47,7 @@ const Home = () => {
         <LogoBrand />
         <HeroSearch onChange={handleChange} />
         <ColorCard />
+        <Footer />
       </div>
     )
   }
