@@ -5,8 +5,13 @@ function LabelChip(props) {
   let label = props.label || 'Label';
   let value = props.value || 'Value';
 
+  let className = `label-chip`;
+  if (props.isLeftAlign) {
+    className += ` label-chip--left-align`;
+  }
+
   return (
-    <div className="label-chip">
+    <div className={className}>
       <label className="label-chip__label">{label}</label>
       <span className="label-chip__value">{value}</span>
     </div>

@@ -13,6 +13,9 @@ const Home = () => {
   const isMobile = useMediaQuery({
     query: '(max-device-width: 480px)'
   });
+  const isLegacyMobile = useMediaQuery({
+    query: '(max-device-width: 320px)'
+  });
 
   useEffect(() => {
     getRandomColor();
@@ -28,9 +31,17 @@ const Home = () => {
     dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(value) });
   }
 
+  let className = `wrapper`;
+  if (isMobile) {
+    className += ` is-mobile`;
+  }
+  if (isLegacyMobile) {
+    className += ` is-legacy-mobile`;
+  }
+
   if (state.selectedColor) {
     return (
-      <div className={`wrapper ${isMobile ? 'is-mobile' : 'is-desktop'}`}>
+      <div className={className}>
         <LogoBrand />
         <HeroSearch onChange={handleChange} />
         <ColorCard />

@@ -47,5 +47,11 @@
         margin-bottom: 8px;
       }
     }
+
+    /* Bottom actions */
+    &__actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
