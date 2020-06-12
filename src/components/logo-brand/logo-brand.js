@@ -1,8 +1,8 @@
 import React from 'react';
-import './logo-brand.scss';
-import { ReactComponent as LogoType } from './../../assets/logos/wthlogotype.svg';
-import { ReactComponent as Logo } from './../../assets/logos/wthlogo.svg';
 import { useMediaQuery } from 'react-responsive';
+import { ReactComponent as Logo } from './../../assets/logos/wthlogo.svg';
+import { ReactComponent as LogoType } from './../../assets/logos/wthlogotype.svg';
+import './logo-brand.scss';
 
 const LogoBrand = () => {
   const isMobile = useMediaQuery({
@@ -11,7 +11,7 @@ const LogoBrand = () => {
 
   return (
     <section className="logo-brand">
-      <Logo className="logo-brand--logo" width={320} height={isMobile ? 48 : 60} />
+      <Logo className="logo-brand--logo" width={240} height={isMobile ? 48 : 60} />
       <LogoType height={isMobile ? 20 : 28} />
     </section>
   );

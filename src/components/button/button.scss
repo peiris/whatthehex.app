@@ -17,6 +17,13 @@
   outline: none;
   transition: all 0.2s ease;
   cursor: pointer;
+  user-select: none;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 
   &__icon {
     font-size: var(--font-size-md);
@@ -27,7 +34,7 @@
 
   &__text {
     position: relative;
-    top: 0px;
+    top: 0;
   }
 
   &__wide {
@@ -40,14 +47,61 @@
     border-color: #000000;
   }
 
-  /* Primary color */
-  &--primary {
-    background-color: #0d51ff;
+  /* Small button */
+  &--sm {
+    padding-top: 0;
+    padding-right: 8px;
+    padding-bottom: 0;
+    padding-left: 8px;
+    height: 28px;
+  }
+
+  /* Extra small button */
+  &--xs {
+    padding-top: 0;
+    padding-right: 4px;
+    padding-bottom: 0;
+    padding-left: 4px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  /* ReadOnly */
+  &--read-only {
     color: #ffffff;
+    background-color: #000000;
+    border-color: #000000;
 
     &:hover {
-      color: #0d51ff;
-      background-color: #ffffff;
+      color: #ffffff;
+      background-color: #000000;
+      border-color: #000000;
+    }
+  }
+
+  /* Primary color */
+  &--primary {
+    color: #ffffff;
+    background-color: #0d51ff;
+
+    &:hover {
+      color: #ffffff;
+      background-color: #0d51ff;
+      border-color: #0d51ff;
+    }
+  }
+
+  /* Pin */
+  &--pin {
+    &:hover {
+      color: #ffffff;
+      background-color: #000000;
+      border-color: #000000;
+    }
+
+    &:active {
+      color: #ffffff;
+      background-color: #0d51ff;
       border-color: #0d51ff;
     }
   }

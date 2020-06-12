@@ -1,6 +1,6 @@
 import React from 'react';
-import './hint.scss';
 import { ReactComponent as HintIcon } from './../../assets/icons/hint.svg';
+import './hint.scss';
 
 const Hint = () => {
   return (

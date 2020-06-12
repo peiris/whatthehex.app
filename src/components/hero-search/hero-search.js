@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Context } from '../../store';
-import './hero-search.scss';
 import { generateColorDetails } from './../../functions/what-the-hex';
-
-import SearchInput from './../search-input/search-input';
 import Hint from './../hint/hint';
+import SearchInput from './../search-input/search-input';
+import './hero-search.scss';
+
 
 const HeroSearch = () => {
   const [state, dispatch] = useContext(Context);

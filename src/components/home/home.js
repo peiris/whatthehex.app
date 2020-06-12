@@ -1,13 +1,13 @@
-import React, { useEffect, useContext } from "react";
-import { generateColorDetails } from './../../functions/what-the-hex';
+import React, { useContext, useEffect } from "react";
 import { useMediaQuery } from 'react-responsive';
-import { Context } from '../../store';
-
-import LogoBrand from './../logo-brand/logo-brand';
-import HeroSearch from './../hero-search/hero-search';
+import { Context } from 'store';
+import { generateColorDetails } from './../../functions/what-the-hex';
 import ColorCard from './../color-card/color-card';
-import './home.scss';
 import Footer from './../footer/footer';
+import HeroSearch from './../hero-search/hero-search';
+import LogoBrand from './../logo-brand/logo-brand';
+import './home.scss';
+
 
 const Home = () => {
   const [state, dispatch] = useContext(Context);
@@ -18,16 +18,24 @@ const Home = () => {
   const isLegacyMobile = useMediaQuery({
     query: '(max-device-width: 320px)'
   });
+  const isTablet = useMediaQuery({
+    query: '(max-device-width: 1024px)'
+  });
 
   useEffect(() => {
-    getRandomColor();
-  }, []);
-
-  const getRandomColor = () => {
+    const getSavedColors = JSON.parse(localStorage.getItem('savedColors'));
+    if (getSavedColors !== null) {
+      dispatch({ type: 'SET_SAVED_COLORS', payload: getSavedColors });
+      // dispatch({ type: 'SET_SIDEBAR_VISIBILITY', payload: true });
+    }
     let randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
     dispatch({ type: 'SET_SELECTED_COLOR', payload: randomColor });
     dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(randomColor) });
-  };
+
+    if (!isTablet) {
+      dispatch({ type: 'SET_SIDEBAR_VISIBILITY', payload: true });
+    }
+  }, [dispatch]);
 
   const handleChange = (value) => {
     dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(value) });
@@ -39,6 +47,9 @@ const Home = () => {
   }
   if (isLegacyMobile) {
     className += ` is-legacy-mobile`;
+  }
+  if (state.isSidebarOpen && !isTablet) {
+    className += ` is-sidebar-open`;
   }
 
   if (state.selectedColor) {
@@ -52,7 +63,7 @@ const Home = () => {
     )
   }
 
-  return false;
+  return 'Loading...';
 }
 
 export default Home

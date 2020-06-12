@@ -1,8 +1,22 @@
 .navigation {
-  display: none;
-  ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
+  position: absolute;
+  z-index: 99999;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+  top: 0;
+
+  /* Fixed */
+  &.is-fixed {
+    position: fixed;
+  }
+
+  /* Sidebar toggle button */
+  .sidebar__toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
   }
 }

@@ -8,6 +8,11 @@ const initialState = {
   isPickerVisible: false,
   isCopiedToClipboard: false,
   clipboardText: null,
+  savedColors: [],
+  isSidebarOpen: false,
+  showColorPalette: true,
+  showCssCODE: false,
+  showScssCODE: false,
   error: null
 };
 

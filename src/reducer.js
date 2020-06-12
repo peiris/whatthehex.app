@@ -30,6 +30,31 @@ const Reducer = (state, action) => {
         ...state,
         clipboardText: action.payload
       };
+    case 'SET_SAVED_COLORS':
+      return {
+        ...state,
+        savedColors: action.payload
+      };
+    case 'SET_SIDEBAR_VISIBILITY':
+      return {
+        ...state,
+        isSidebarOpen: action.payload
+      };
+    case 'SET_COLOR_PALETTE_VISIBILITY':
+      return {
+        ...state,
+        showColorPalette: action.payload
+      };
+    case 'SET_CSS_CODE_VISIBILITY':
+      return {
+        ...state,
+        showCssCODE: action.payload
+      };
+    case 'SET_SCSS_CODE_VISIBILITY':
+      return {
+        ...state,
+        showScssCODE: action.payload
+      };
     case 'SET_ERROR':
       return {
         ...state,

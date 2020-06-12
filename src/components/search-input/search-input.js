@@ -1,9 +1,9 @@
 import React, { useContext, useRef } from 'react';
 import { SketchPicker } from 'react-color';
-import './search-input.scss';
-import { ReactComponent as EnterIcon } from './../../assets/icons/enter.svg';
 import { Context } from '../../store';
 import { generateColorDetails } from './../../functions/what-the-hex';
+import Button from './../button/button';
+import './search-input.scss';
 
 const SearchInput = (props) => {
   const inputEl = useRef(null);
@@ -23,12 +23,16 @@ const SearchInput = (props) => {
   }
 
   const _onInputChange = value => {
-    dispatch({ type: 'SET_SELECTED_COLOR', payload: value });
-    dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(inputEl.current.value) });
+    if (value) {
+      dispatch({ type: 'SET_SELECTED_COLOR', payload: value });
+      dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(inputEl.current.value) });
+    }
   }
 
-  const _showPicker = () => {
-    dispatch({ type: 'SET_PICKER_VISIBILITY', payload: true });
+  const showPicker = (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SET_PICKER_VISIBILITY', payload: !state.isPickerVisible });
+    inputEl.current.focus();
   }
 
   const _hidePicker = () => {
@@ -45,20 +49,27 @@ const SearchInput = (props) => {
         value={state.selectedColor}
         ref={inputEl}
         onChange={e => _onInputChange(e.target.value)}
-        onClick={_showPicker}
+        onClick={_hidePicker}
       />
 
-      <button className="btn search-input__btn"><EnterIcon /></button>
+      <Button
+        className={'search-input__btn'}
+        icon={'ri-gradienter-line'}
+        isSmall={true}
+        isPrimary={true}
+        onClick={showPicker}
+      />
 
-      {state.isPickerVisible && (<div className="search-input--color-picker">
-        <span className="search-input--overlay" onClick={_hidePicker}></span>
-        <SketchPicker
-          color={state.selectedColor}
-          onChange={handleChangeComplete}
-          disableAlpha={true}
-        />
-      </div>)
-      }
+      {state.isPickerVisible && (
+        <div className="search-input--color-picker">
+          <span className="search-input--overlay" onClick={_hidePicker}></span>
+          <SketchPicker
+            color={state.selectedColor}
+            onChange={handleChangeComplete}
+            disableAlpha={true}
+          />
+        </div>
+      )}
     </form >
   );
 

@@ -1,15 +1,24 @@
 .home {
-  display: flex;
   position: absolute;
-  left: 0;
-  right: 0;
   top: 50%;
-  transform: translateY(-50%);
+  left: 0;
+  display: flex;
+  width: 100%;
   align-items: center;
   flex-direction: column;
+  transform: translateY(-50%);
+  transition: width 0.20s ease;
   
   &.is-mobile {
+    position: static;
     padding-right: 28px;
+    padding-bottom: 10vh;
     padding-left: 28px;
+    margin-top: 15vh;
+    transform: unset;
+  }
+
+  &.is-sidebar-open {
+    width: calc(100% - var(--sidebar-width));
   }
 }

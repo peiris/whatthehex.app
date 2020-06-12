@@ -5,6 +5,8 @@
   width: 100%;
 
   &__form-control {
+    position: relative;
+    z-index: 9999;
     padding-right: 72px;
     width: 100%;
   }
@@ -12,8 +14,9 @@
   &__btn {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 10px;
     bottom: 0;
+    z-index: 9999;
     margin-top: auto;
     margin-bottom: auto;
   }
@@ -25,8 +28,8 @@
   &--color-picker {
     position: absolute;
     top: 0;
-    left: 0;
     top: calc(var(--input-height-default) + 20px);
+    left: 0;
     z-index: 999;
     width: 100%;
   }
@@ -41,13 +44,21 @@
   }
 
   .sketch-picker {
+    box-sizing: border-box !important;
+    padding: 16px !important;
+    margin-right: auto;
+    margin-left: auto;
+    width: 260px !important;
     box-shadow: -1px 4px 40px 5px rgba(0, 0, 0, 0.06) !important;
     border: 0 solid var(--form-control-border-color);
-    padding: 16px !important;
     border-radius: 5px !important;
-    width: 260px !important;
-    box-sizing: border-box !important;
-    margin-left: auto;
-    margin-right: auto;
+
+    .flexbox-fix {
+      border-top: 0 !important;
+    }
+
+    .flexbox-fix:nth-child(3) {
+      display: none !important;
+    }
   }
 }

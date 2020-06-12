@@ -6,7 +6,7 @@ const Color = require('color');
  */
 function isValidHexCode(hex) {
   const regex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i;
-  return (hex && (hex.length < 7) || !regex.test(hex)) ? false : true;
+  return (hex & (hex.length < 7) || !regex.test(hex)) ? false : true;
 }
 
 /* 

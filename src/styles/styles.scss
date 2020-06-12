@@ -1,16 +1,17 @@
-@import './reboot';
-@import './variables';
-@import './design-system/typography';
+@import "./reboot";
+@import "./variables";
+@import "./design-system/typography";
 @import "./design-system/form-control";
 @import "./design-system/button";
 
 body {
-  background-color: #fafafa;
+  background-color: #f9f9fd;
 }
 
 .wrapper {
   display: flex;
   padding-right: 20px;
+  padding-bottom: 15vh;
   padding-left: 20px;
   margin-right: auto;
   margin-left: auto;
@@ -18,10 +19,27 @@ body {
   min-height: 95vh;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 15vh;
 }
-
 
 .mr-8 {
   margin-right: 8px;
+}
+
+::-moz-selection {
+  color: #ffffff;
+  background: #0d51ff;
+}
+
+::selection {
+  color: #ffffff;
+  background: #0d51ff;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

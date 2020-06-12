@@ -11,19 +11,44 @@ function Button(props) {
   if (props.isWide) {
     className += ` button__wide`;
   }
+  if (props.isSmall) {
+    className += ` button--sm`;
+  }
+  if (props.isExtraSmall) {
+    className += ` button--xs`;
+  }
+  if (props.isPrimary) {
+    className += ` button--primary`;
+  }
+  if (props.isReadOnly) {
+    className += ` button--read-only`;
+  }
+  if (props.isPin) {
+    className += ` button--pin`;
+  }
 
   const switchIconToFillIcon = () => {
-    let fillIcon = icon.replace("line", "fill");
-    setIcon(fillIcon);
+    if (icon && props.isHover !== false) {
+      let fillIcon = icon.replace("line", "fill");
+      setIcon(fillIcon);
+    }
   }
 
   const switchIconToLineIcon = () => {
-    let lineIcon = icon.replace("fill", "line");
-    setIcon(lineIcon);
+    if (icon && props.isHover !== false) {
+      let lineIcon = icon.replace("fill", "line");
+      setIcon(lineIcon);
+    }
   }
 
   return (
-    <button onMouseEnter={switchIconToFillIcon} onMouseLeave={switchIconToLineIcon} onClick={props.onClick} className={className} style={props.style}>
+    <button
+      onMouseEnter={switchIconToFillIcon}
+      onMouseLeave={switchIconToLineIcon}
+      onClick={props.onClick}
+      className={className}
+      style={props.style}
+    >
       {props.icon && <i className={`button__icon ${icon}`}></i>}
       {props.text && <span className="button__text">{props.text}</span>}
     </button>
