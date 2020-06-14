@@ -1,7 +1,7 @@
+import { ReactComponent as Logo } from 'assets/logos/wthlogo.svg';
+import { ReactComponent as LogoType } from 'assets/logos/wthlogotype.svg';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { ReactComponent as Logo } from './../../assets/logos/wthlogo.svg';
-import { ReactComponent as LogoType } from './../../assets/logos/wthlogotype.svg';
 import './logo-brand.scss';
 
 const LogoBrand = () => {

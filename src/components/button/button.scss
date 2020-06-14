@@ -79,6 +79,23 @@
     }
   }
 
+  /* IconOnly */
+  &--icon-only {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    color: #000000;
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover {
+      color: #000000;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
   /* Primary color */
   &--primary {
     color: #ffffff;

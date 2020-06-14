@@ -6,6 +6,10 @@
 
 body {
   background-color: #f9f9fd;
+
+  &.dark-mode {
+    background-color: #2e2e35;
+  }
 }
 
 .wrapper {
@@ -42,4 +46,37 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@-webkit-keyframes placeHolderSwept {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+@-moz-keyframes placeHolderSwept {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+@-o-keyframes placeHolderSwept {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+@keyframes placeHolderSwept {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
 }

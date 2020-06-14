@@ -6,9 +6,11 @@
   padding-left: 28px;
   width: 100%;
   max-width: 480px;
+  min-height: 276px;
   background: #ffffff;
   box-shadow: -1px 4px 40px 5px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
+  transition: all 0.2s ease;
 
   .is-mobile & {
     padding-top: 20px;
@@ -38,6 +40,12 @@
 
     .is-mobile & {
       margin-bottom: 20px;
+    }
+  }
+
+  &__actions {
+    .is-loading & {
+      display: none;
     }
   }
 

@@ -18,6 +18,11 @@
       width: 36px;
       height: 36px;
     }
+
+    .is-loading & {
+      color: #ececec !important;
+      background-color: #ececec !important;
+    }
   }
 
   &__data {
@@ -36,8 +41,20 @@
       }
 
       .color-chip--sm & {
-        font-size: var(--font-size-md);
         margin-bottom: 2px;
+        font-size: var(--font-size-md);
+      }
+
+      .is-loading & {
+        height: 16px;
+        width: 130px;
+        overflow: hidden;
+        line-height: 80px;
+        background: #ebebec;
+        background-image: linear-gradient(to right, #ebebec 0%, #e0e0e2 20%, #ebebec 40%, #ebebec 100%);
+        background-repeat: no-repeat;
+        border-radius: 2px;
+        animation: placeHolderSwept 1s infinite linear forwards;
       }
     }
 
@@ -52,6 +69,17 @@
       -khtml-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
+
+      .is-loading & {
+        height: 12px;
+        overflow: hidden;
+        line-height: 80px;
+        background: #ebebec;
+        background-image: linear-gradient(to right, #ebebec 0%, #e0e0e2 20%, #ebebec 40%, #ebebec 100%);
+        background-repeat: no-repeat;
+        border-radius: 2px;
+        animation: placeHolderSwept 1s infinite linear forwards;
+      }
     }
   }
 

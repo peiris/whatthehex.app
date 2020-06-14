@@ -5,6 +5,10 @@ import React from "react";
 import Store from 'store';
 
 const App = () => {
+  // useEffect(() => {
+  //   document.getElementById('body').className = 'dark-mode';
+  // }, []);
+  
   return (
     <Store>
       <Navigation />

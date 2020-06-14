@@ -35,10 +35,32 @@
       margin-right: 8px;
       // display: none;
     }
+
+    .is-loading & {
+      height: 16px;
+      overflow: hidden;
+      line-height: 80px;
+      background: #ebebec;
+      background-image: linear-gradient(to right, #ebebec 0%, #e0e0e2 20%, #ebebec 40%, #ebebec 100%);
+      background-repeat: no-repeat;
+      border-radius: 2px;
+      animation: placeHolderSwept 1s infinite linear forwards;
+    }
   }
 
   &__value {
     font-size: var(--font-size-md);
     font-weight: 500;
+
+    .is-loading & {
+      height: 16px;
+      overflow: hidden;
+      line-height: 80px;
+      background: #ebebec;
+      background-image: linear-gradient(to right, #ebebec 0%, #e0e0e2 20%, #ebebec 40%, #ebebec 100%);
+      background-repeat: no-repeat;
+      border-radius: 2px;
+      animation: placeHolderSwept 1s infinite linear forwards;
+    }
   }
 }

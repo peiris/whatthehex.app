@@ -40,7 +40,7 @@ const ColorCard = (props) => {
   }
 
   return (
-    <article className="color-card">
+    <article className={`color-card ${colorObj.variable === undefined ? 'is-loading' : ''}`}>
       <div className="color-card__top">
         <ColorChip colorHex={colorObj.requested} colorName={colorObj.name} colorNameType={colorType} />
         <div className="color-card__actions">

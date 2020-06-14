@@ -1,5 +1,5 @@
 :root {
-  --input-height-default: 48px; 
+  --input-height-default: 48px;
 
   --font-size-xs: 10px;
   --font-size-sm: 12px;
@@ -12,4 +12,9 @@
   --form-control-text-weight: 500;
 
   --sidebar-width: 320px;
+
+  .dark-mode {
+    --form-control-text-color: #ffffff;
+    --form-control-border-color: #3d3d48;
+  }
 }

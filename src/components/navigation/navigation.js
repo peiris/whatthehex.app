@@ -6,9 +6,6 @@ import './navigation.scss';
 
 const Navigation = () => {
   const [state, dispatch] = useContext(Context);
-  const isTablet = useMediaQuery({
-    query: '(max-device-width: 1280px)'
-  });
   const isMobile = useMediaQuery({
     query: '(max-device-width: 480px)'
   });
@@ -25,6 +22,11 @@ const Navigation = () => {
     classNames += ` is-fixed`;
   }
 
+  let toggleButtonText = `Get Code`;
+  if (state.isSidebarOpen) {
+    toggleButtonText = `Close Code`;
+  }
+
   return (
     <nav className={classNames}>
       <Button
@@ -33,7 +35,7 @@ const Navigation = () => {
         isSmall={true}
         isPin={true}
         icon={'ri-code-line'}
-        text={`Get code`}
+        text={toggleButtonText}
         onClick={e => onSidebarToggleButtonClick()}
       />
       <ul>

@@ -1,3 +1,4 @@
+import { ReactComponent as PickerIcon } from 'assets/icons/picker.svg';
 import React, { useContext, useRef } from 'react';
 import { SketchPicker } from 'react-color';
 import { Context } from '../../store';
@@ -32,12 +33,10 @@ const SearchInput = (props) => {
   const showPicker = (e) => {
     e.preventDefault();
     dispatch({ type: 'SET_PICKER_VISIBILITY', payload: !state.isPickerVisible });
-    inputEl.current.focus();
   }
 
   const _hidePicker = () => {
     dispatch({ type: 'SET_PICKER_VISIBILITY', payload: false });
-    inputEl.current.focus();
   }
 
   return (
@@ -54,9 +53,9 @@ const SearchInput = (props) => {
 
       <Button
         className={'search-input__btn'}
-        icon={'ri-gradienter-line'}
+        iconComponent={<PickerIcon width={24} height={20} />}
         isSmall={true}
-        isPrimary={true}
+        isIconOnly={true}
         onClick={showPicker}
       />
 

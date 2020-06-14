@@ -26,6 +26,9 @@ function Button(props) {
   if (props.isPin) {
     className += ` button--pin`;
   }
+  if (props.isIconOnly) {
+    className += ` button--icon-only`;
+  }
 
   const switchIconToFillIcon = () => {
     if (icon && props.isHover !== false) {
@@ -49,6 +52,7 @@ function Button(props) {
       className={className}
       style={props.style}
     >
+      {props.iconComponent && props.iconComponent}
       {props.icon && <i className={`button__icon ${icon}`}></i>}
       {props.text && <span className="button__text">{props.text}</span>}
     </button>

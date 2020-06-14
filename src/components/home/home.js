@@ -35,7 +35,7 @@ const Home = () => {
     if (!isTablet) {
       dispatch({ type: 'SET_SIDEBAR_VISIBILITY', payload: true });
     }
-  }, [dispatch]);
+  }, [dispatch, isTablet]);
 
   const handleChange = (value) => {
     dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(value) });
