@@ -44,7 +44,7 @@ const ColorCard = (props) => {
       <div className="color-card__top">
         <ColorChip colorHex={colorObj.requested} colorName={colorObj.name} colorNameType={colorType} />
         <div className="color-card__actions">
-          {!isMobile && <Button icon={'ri-refresh-line'} style={{ marginRight: '8px' }} onClick={refreshColor} />}
+          {!isMobile && <Button icon={'ri-shuffle-line'} style={{ marginRight: '8px' }} onClick={refreshColor} />}
           {!isMobile && !colorObj.isSelected && <Button icon={'ri-heart-add-line'} text={'Save'} onClick={saveColor} />}
 
           {!isMobile && colorObj.isSelected &&
@@ -66,7 +66,7 @@ const ColorCard = (props) => {
 
       {isMobile &&
         <div className="color-card__bottom__actions">
-          <Button icon={'ri-refresh-line'} style={{ marginRight: '8px' }} onClick={refreshColor} text={'Random'} />
+          <Button icon={'ri-shuffle-line'} style={{ marginRight: '8px' }} onClick={refreshColor} text={'Random'} />
 
           {!colorObj.isSelected && <Button icon={'ri-heart-add-line'} text={'Save'} onClick={saveColor} />}
 
