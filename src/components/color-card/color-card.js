@@ -11,7 +11,7 @@ const ColorCard = (props) => {
   const [state, dispatch] = useContext(Context);
 
   const isMobile = useMediaQuery({
-    query: '(max-device-width: 480px)'
+    query: '(max-width: 480px)'
   });
 
   const colorObj = state.selectedColorObj;

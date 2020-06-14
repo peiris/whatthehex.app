@@ -12,7 +12,7 @@ const Sidebar = () => {
   const [state, dispatch] = useContext(Context);
 
   const isTablet = useMediaQuery({
-    query: '(max-device-width: 1024px)'
+    query: '(max-width: 1024px)'
   });
 
   let savedColorsCount = state.savedColors.length;

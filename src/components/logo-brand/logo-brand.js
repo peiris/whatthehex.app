@@ -6,7 +6,7 @@ import './logo-brand.scss';
 
 const LogoBrand = () => {
   const isMobile = useMediaQuery({
-    query: '(max-device-width: 480px)'
+    query: '(max-width: 480px)'
   });
 
   return (

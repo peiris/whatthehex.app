@@ -13,13 +13,13 @@ const Home = () => {
   const [state, dispatch] = useContext(Context);
 
   const isMobile = useMediaQuery({
-    query: '(max-device-width: 480px)'
+    query: '(max-width: 480px)'
   });
   const isLegacyMobile = useMediaQuery({
-    query: '(max-device-width: 320px)'
+    query: '(max-width: 320px)'
   });
   const isTablet = useMediaQuery({
-    query: '(max-device-width: 1024px)'
+    query: '(max-width: 1024px)'
   });
 
   useEffect(() => {
