@@ -16,9 +16,9 @@ const ColorCard = (props) => {
 
   const colorObj = state.selectedColorObj;
 
-  if (colorObj.variable.match(/^\d/)) {
-    colorObj.variable = `clr-${colorObj.variable}`;
-  }
+  // if (colorObj.variable.match(/^\d/)) {
+  //   colorObj.variable = `clr-${colorObj.variable}`;
+  // }
 
   const colorType = (colorObj.isExact ? 'Exact color' : 'Closest color');
 
