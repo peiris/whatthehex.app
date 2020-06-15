@@ -25,8 +25,17 @@ const SearchInput = (props) => {
 
   const _onInputChange = value => {
     if (value) {
+      let generateObject = generateColorDetails(inputEl.current.value);
+
+      if (state.savedColors.filter(e => e.requested === value).length > 0) {
+        console.log('is saved');
+        let updatedColorObject = { ...generateObject, isSelected: true };
+        dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: updatedColorObject });
+      } else {
+        dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateObject });
+      }
+
       dispatch({ type: 'SET_SELECTED_COLOR', payload: value });
-      dispatch({ type: 'SET_SELECTED_COLOR_OBJECT', payload: generateColorDetails(inputEl.current.value) });
     }
   }
 
