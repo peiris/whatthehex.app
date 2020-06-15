@@ -1,13 +1,13 @@
+import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'normalize.css';
 import 'remixicon/fonts/remixicon.css';
-import './styles/styles.scss';
 import App from './App';
+import './styles/styles.scss';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+    <App />,
+  // </React.StrictMode>,
   document.getElementById('root')
 );

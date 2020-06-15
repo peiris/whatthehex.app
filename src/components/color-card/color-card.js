@@ -59,11 +59,16 @@ const ColorCard = (props) => {
   return (
     <article className={`color-card ${colorObj.variable === undefined ? 'is-loading' : ''}`}>
       <div className="color-card__top">
-        <ColorChip colorHex={colorObj.requested} colorName={colorObj.name} colorNameType={colorType} />
-        <div className="color-card__actions">
+        <ColorChip
+          colorHex={colorObj.requested}
+          colorName={colorObj.name}
+          colorNameType={colorType}
+          colorReturned={colorObj.returned}
+        />
 
+        <div className="color-card__actions">
           {!isMobile && <Button icon={'ri-shuffle-line'} style={{ marginRight: '8px' }} onClick={refreshColor} />}
-          
+
           {!isMobile && !disableSaveButton(colorObj) && <Button icon={'ri-heart-add-line'} text={'Save'} onClick={saveColor} />}
 
           {!isMobile && disableSaveButton(colorObj) &&

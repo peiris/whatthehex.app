@@ -7,7 +7,6 @@ import { vs } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Context } from 'store';
 import './sidebar.scss';
 
-
 const Sidebar = () => {
   const [state, dispatch] = useContext(Context);
 
@@ -74,100 +73,100 @@ const Sidebar = () => {
   return (
     <div className={`${classNames}`}>
       {state.isSidebarOpen && isTablet && <span className="sidebar__backdrop" onClick={hideTheSideBar}></span>}
-      
 
-    <div className="sidebar__content">
-      <div className="sidebar__header">
-        <h2 className={'sidebar__heading'}>{heading}</h2>
+      <div className="sidebar__content">
+        <div className="sidebar__header">
+          <h2 className={'sidebar__heading'}>{heading}</h2>
 
-        <div className="sidebar__tab-heading">
-          <button
-            className={state.showColorPalette ? 'active' : ''}
-            onClick={e => handleButtonClick('SET_COLOR_PALETTE_VISIBILITY')}
-          >
-            <i className="ri-stack-fill"></i>
-          </button>
+          <div className="sidebar__tab-heading">
+            <button
+              className={state.showColorPalette ? 'active' : ''}
+              onClick={e => handleButtonClick('SET_COLOR_PALETTE_VISIBILITY')}
+            >
+              <i className="ri-stack-fill"></i>
+            </button>
 
-          <button
-            className={state.showCssCODE ? 'active' : ''}
-            onClick={e => handleButtonClick('SET_CSS_CODE_VISIBILITY')}
-          >CSS</button>
+            <button
+              className={state.showCssCODE ? 'active' : ''}
+              onClick={e => handleButtonClick('SET_CSS_CODE_VISIBILITY')}
+            >CSS</button>
 
-          <button
-            className={state.showScssCODE ? 'active' : ''}
-            onClick={e => handleButtonClick('SET_SCSS_CODE_VISIBILITY')}
-          >SASS</button>
+            <button
+              className={state.showScssCODE ? 'active' : ''}
+              onClick={e => handleButtonClick('SET_SCSS_CODE_VISIBILITY')}
+            >SASS</button>
+          </div>
+        </div>
+
+        <div className="sidebar__body">
+
+          {state.savedColors.length < 1 &&
+            <div className={'sidebar__placeholder'}>
+              <EmptyImage
+                width={200}
+                height={200}
+              />
+              <h4 className={'sidebar__placeholder__title'}>Much colors, such empty...</h4>
+              <span className={'sidebar__placeholder__sub-title'}>Click on "Save" button to add colors</span>
+            </div>
+          }
+
+          {state.showColorPalette && state.savedColors.length > 0 &&
+            <div className="sidebar--colors-list">
+              {state.savedColors &&
+                state.savedColors.map((color, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`color-chip-wrapper ${state.selectedColor === color.requested && 'is-active'}`}
+                      onClick={e => onClickSavedColorChip(color)}
+                    >
+                      <ColorChip
+                        colorHex={color.requested}
+                        colorName={color.name}
+                        colorNameType={color.requested}
+                        isSmall={true}
+                        onClick={e => onClickColorChipAction(e, color)}
+                      />
+                    </div>
+                  )
+                })
+              }
+            </div>
+          }
+
+          {state.showCssCODE && state.savedColors.length > 0 &&
+            <div className="sidebar--code sidebar--code--css">
+              <SyntaxHighlighter
+                language="css"
+                style={vs}
+                showLineNumbers={false}
+              >
+                {`:root {\n${
+                  state.savedColors.map((color, index) => {
+                    if (savedColorsCount === index + 1) {
+                      return `  --${color.variable}: ${color.requested};`
+                    } else {
+                      return `  --${color.variable}: ${color.requested};\n`
+                    }
+                  }).join('')
+                  }\n}`}
+              </SyntaxHighlighter>
+            </div>
+          }
+
+          {state.showScssCODE && state.savedColors.length > 0 &&
+            <div className="sidebar--code sidebar--code--scss">
+              <SyntaxHighlighter language="scss" style={vs}>
+                {state.savedColors.map(color => {
+                  let string = `$${digitCheck(color.variable)}: ${color.requested}; \n`;
+                  return string;
+                }).join('')}
+              </SyntaxHighlighter>
+            </div>
+          }
         </div>
       </div>
-
-      <div className="sidebar__body">
-
-        {state.savedColors.length < 1 &&
-          <div className={'sidebar__placeholder'}>
-            <EmptyImage
-              width={200}
-              height={200}
-            />
-            <h4 className={'sidebar__placeholder__title'}>Much colors, such empty...</h4>
-          </div>
-        }
-
-        {state.showColorPalette && state.savedColors.length > 0 &&
-          <div className="sidebar--colors-list">
-            {state.savedColors &&
-              state.savedColors.map((color, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={`color-chip-wrapper ${state.selectedColor === color.requested && 'is-active'}`}
-                    onClick={e => onClickSavedColorChip(color)}
-                  >
-                    <ColorChip
-                      colorHex={color.requested}
-                      colorName={color.name}
-                      colorNameType={color.requested}
-                      isSmall={true}
-                      onClick={e => onClickColorChipAction(e, color)}
-                    />
-                  </div>
-                )
-              })
-            }
-          </div>
-        }
-
-        {state.showCssCODE && state.savedColors.length > 0 &&
-          <div className="sidebar--code sidebar--code--css">
-            <SyntaxHighlighter
-              language="css"
-              style={vs}
-              showLineNumbers={false}
-            >
-              {`:root {\n${
-                state.savedColors.map((color, index) => {
-                  if (savedColorsCount === index + 1) {
-                    return `  --${color.variable}: ${color.requested};`
-                  } else {
-                    return `  --${color.variable}: ${color.requested};\n`
-                  }
-                }).join('')
-                }\n}`}
-            </SyntaxHighlighter>
-          </div>
-        }
-
-        {state.showScssCODE && state.savedColors.length > 0 &&
-          <div className="sidebar--code sidebar--code--scss">
-            <SyntaxHighlighter language="scss" style={vs}>
-              {state.savedColors.map(color => {
-                let string = `$${digitCheck(color.variable)}: ${color.requested}; \n`;
-                return string;
-              }).join('')}
-            </SyntaxHighlighter>
-          </div>
-        }
-      </div>
-    </div>
     </div >
   );
 }
