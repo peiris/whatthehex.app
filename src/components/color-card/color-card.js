@@ -71,7 +71,7 @@ const ColorCard = (props) => {
         <LabelChip label={'String'} value={`${colorObj.variable}`} />
         <LabelChip label={'RGB'} value={`rgb(${colorObj.rgb})`} />
         <LabelChip label={'CSS'} value={`--${colorObj.variable}: ${colorObj.requested}`} />
-        <LabelChip label={'SCSS'} value={`$${colorObj.variable}: ${colorObj.requested}`} />
+        <LabelChip label={'SCSS'} value={`$color-${colorObj.variable}: ${colorObj.requested}`} />
       </div>
 
       {isMobile &&
