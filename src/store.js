@@ -9,6 +9,7 @@ const initialState = {
   isCopiedToClipboard: false,
   clipboardText: null,
   savedColors: [],
+  isSavedColor: false,
   isSidebarOpen: false,
   showColorPalette: true,
   showCssCODE: false,

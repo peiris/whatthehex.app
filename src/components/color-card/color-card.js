@@ -39,15 +39,26 @@ const ColorCard = (props) => {
     dispatch({ type: 'SET_SIDEBAR_VISIBILITY', payload: true });
   }
 
+  const disableSaveButton = (colorObj) => {
+    console.log(state.isSavedColor);
+    if (colorObj.isSelected || state.isSavedColor) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return (
     <article className={`color-card ${colorObj.variable === undefined ? 'is-loading' : ''}`}>
       <div className="color-card__top">
         <ColorChip colorHex={colorObj.requested} colorName={colorObj.name} colorNameType={colorType} />
         <div className="color-card__actions">
-          {!isMobile && <Button icon={'ri-shuffle-line'} style={{ marginRight: '8px' }} onClick={refreshColor} />}
-          {!isMobile && !colorObj.isSelected && <Button icon={'ri-heart-add-line'} text={'Save'} onClick={saveColor} />}
 
-          {!isMobile && colorObj.isSelected &&
+          {!isMobile && <Button icon={'ri-shuffle-line'} style={{ marginRight: '8px' }} onClick={refreshColor} />}
+          
+          {!isMobile && !disableSaveButton(colorObj) && <Button icon={'ri-heart-add-line'} text={'Save'} onClick={saveColor} />}
+
+          {!isMobile && disableSaveButton(colorObj) &&
             <Button
               icon={'ri-check-double-fill'}
               text={'Saved'}
@@ -68,9 +79,9 @@ const ColorCard = (props) => {
         <div className="color-card__bottom__actions">
           <Button icon={'ri-shuffle-line'} style={{ marginRight: '8px' }} onClick={refreshColor} text={'Random'} />
 
-          {!colorObj.isSelected && <Button icon={'ri-heart-add-line'} text={'Save'} onClick={saveColor} />}
+          {!disableSaveButton(colorObj) && <Button icon={'ri-heart-add-line'} text={'Save'} onClick={saveColor} />}
 
-          {colorObj.isSelected &&
+          {disableSaveButton(colorObj) &&
             <Button
               icon={'ri-check-double-fill'}
               text={'Saved'}
