@@ -16,9 +16,13 @@ const ColorCard = (props) => {
 
   const colorObj = state.selectedColorObj;
 
-  // if (colorObj.variable.match(/^\d/)) {
-  //   colorObj.variable = `clr-${colorObj.variable}`;
-  // }
+  const digitCheck = (variable) => {
+    if (variable !== undefined && variable.match(/^\d/)) {
+      return `clr-${variable}`;
+    } else {
+      return variable;
+    }
+  }
 
   const colorType = (colorObj.isExact ? 'Exact color' : 'Closest color');
 
@@ -76,7 +80,7 @@ const ColorCard = (props) => {
         <LabelChip label={'String'} value={`${colorObj.variable}`} />
         <LabelChip label={'RGB'} value={`rgb(${colorObj.rgb})`} />
         <LabelChip label={'CSS'} value={`--${colorObj.variable}: ${colorObj.requested}`} />
-        <LabelChip label={'SCSS'} value={`$${colorObj.variable}: ${colorObj.requested}`} />
+        <LabelChip label={'SCSS'} value={`$${digitCheck(colorObj.variable)}: ${colorObj.requested}`} />
       </div>
 
       {isMobile &&

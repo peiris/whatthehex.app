@@ -63,6 +63,14 @@ const Sidebar = () => {
     dispatch({ type: 'SET_SIDEBAR_VISIBILITY', payload: false })
   }
 
+  const digitCheck = (variable) => {
+    if (variable !== undefined && variable.match(/^\d/)) {
+      return `clr-${variable}`;
+    } else {
+      return variable;
+    }
+  }
+
   return (
     <div className={`${classNames}`}>
       {state.isSidebarOpen && isTablet && <span className="sidebar__backdrop" onClick={hideTheSideBar}></span>}
@@ -152,7 +160,7 @@ const Sidebar = () => {
           <div className="sidebar--code sidebar--code--scss">
             <SyntaxHighlighter language="scss" style={vs}>
               {state.savedColors.map(color => {
-                let string = `$${color.variable}: ${color.requested}; \n`;
+                let string = `$${digitCheck(color.variable)}: ${color.requested}; \n`;
                 return string;
               }).join('')}
             </SyntaxHighlighter>
