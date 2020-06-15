@@ -40,7 +40,6 @@ const ColorCard = (props) => {
   }
 
   const disableSaveButton = (colorObj) => {
-    console.log(state.isSavedColor);
     if (colorObj.isSelected || state.isSavedColor) {
       return true
     } else {
