@@ -176,6 +176,7 @@
 
       @media screen and (max-width: 1024px) {
         display: flex;
+        opacity: 0.1;
       }
     }
 
@@ -187,6 +188,7 @@
 
       .color-chip__action {
         display: flex;
+        opacity: 1;
       }
     }
   }
