@@ -25,9 +25,15 @@ function ColorChip(props) {
       <span className="color-chip__preview" style={{ backgroundColor: colorHex }}></span>
       <div className="color-chip__data">
         <h2 className="color-chip__data__title">{colorName}</h2>
-        <CustomTooltip title={colorReturned} aria-label={colorReturned} placement="bottom-end">
-          <span className="color-chip__data__label">{colorNameType} <i className="ri-question-line"></i></span>
-        </CustomTooltip>
+
+        {props.isInCard ?
+          <CustomTooltip title={colorReturned} aria-label={colorReturned} placement="bottom-end">
+            <span className="color-chip__data__label">{colorNameType} <i className="ri-question-line"></i></span>
+          </CustomTooltip>
+          :
+          <span className="color-chip__data__label">{colorNameType}</span>
+        }
+
 
       </div>
       {props.onClick && (

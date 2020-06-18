@@ -64,6 +64,7 @@ const ColorCard = (props) => {
           colorName={colorObj.name}
           colorNameType={colorType}
           colorReturned={colorObj.returned}
+          isInCard={true}
         />
 
         <div className="color-card__actions">
