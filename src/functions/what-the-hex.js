@@ -85,7 +85,7 @@ function generateColorDetails(hex) {
     let color = Color(hex);
 
     let normalize = closestColor.name.normalize('NFD');
-    let removeSpecialChars = normalize.replace(/[\u0300-\u036f]/g, "");
+    let removeSpecialChars = normalize.replace(/[\u0300-\u036f-&/\\#,+()$~%.'":*?<>{}]/g, "");
 
     let convertSpaceToHyphen = removeSpecialChars.replace(/\s+/g, '-').toLowerCase();
     // let removeSpecialChars = convertSpaceToHyphen.replace(/[^a-zA-Z0-9-]/g, "");
