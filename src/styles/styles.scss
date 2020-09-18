@@ -5,78 +5,98 @@
 @import "./design-system/button";
 
 body {
-  background-color: #f9f9fd;
+	background-color: #f7faff;
 
-  &.dark-mode {
-    background-color: #2e2e35;
-  }
+	&.dark-mode {
+		background-color: #2e2e35;
+	}
 }
 
 .wrapper {
-  display: flex;
-  padding-right: 20px;
-  padding-bottom: 15vh;
-  padding-left: 20px;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1280px;
-  min-height: 95vh;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	padding-right: 20px;
+	padding-bottom: 15vh;
+	padding-left: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 1280px;
+	min-height: 95vh;
+	align-items: center;
+	flex-direction: column;
 }
 
 .mr-8 {
-  margin-right: 8px;
+	margin-right: 8px;
 }
 
 ::-moz-selection {
-  color: #ffffff;
-  background: #0d51ff;
+	color: #ffffff;
+	background: #0d51ff;
 }
 
 ::selection {
-  color: #ffffff;
-  background: #0d51ff;
+	color: #ffffff;
+	background: #0d51ff;
 }
 
 .noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+	user-select: none;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 
 @-webkit-keyframes placeHolderSwept {
-  0% {
-    background-position: -400px 0;
-  }
-  100% {
-    background-position: 400px 0;
-  }
+	0% {
+		background-position: -400px 0;
+	}
+	100% {
+		background-position: 400px 0;
+	}
 }
 @-moz-keyframes placeHolderSwept {
-  0% {
-    background-position: -400px 0;
-  }
-  100% {
-    background-position: 400px 0;
-  }
+	0% {
+		background-position: -400px 0;
+	}
+	100% {
+		background-position: 400px 0;
+	}
 }
 @-o-keyframes placeHolderSwept {
-  0% {
-    background-position: -400px 0;
-  }
-  100% {
-    background-position: 400px 0;
-  }
+	0% {
+		background-position: -400px 0;
+	}
+	100% {
+		background-position: 400px 0;
+	}
 }
 @keyframes placeHolderSwept {
-  0% {
-    background-position: -400px 0;
-  }
-  100% {
-    background-position: 400px 0;
-  }
+	0% {
+		background-position: -400px 0;
+	}
+	100% {
+		background-position: 400px 0;
+	}
+}
+
+.sortable-ghost {
+	opacity: 0;
+}
+
+.toast-message {
+  padding-top: 4px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  margin-bottom: 4px;
+	color: #ffffff;
+  font-size: 12px;
+  background-color: #000000;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  transition: transform 220ms cubic-bezier(0.2,0,0,1),opacity 220ms;
+  cursor: default;
 }

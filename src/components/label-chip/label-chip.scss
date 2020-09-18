@@ -4,12 +4,12 @@
   justify-content: space-between;
 
   .is-legacy-mobile & {
+    width: 100%;
     overflow: hidden;
+    overflow:hidden;
     justify-content: flex-start;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
-    overflow:hidden;
     // display: grid;
   }
 
@@ -31,8 +31,8 @@
       padding-right: 8px;
       padding-bottom: 2px;
       padding-left: 8px;
-      min-width: auto;
       margin-right: 8px;
+      min-width: auto;
       // display: none;
     }
 
@@ -51,6 +51,7 @@
   &__value {
     font-size: var(--font-size-md);
     font-weight: 500;
+    cursor: pointer;
 
     .is-loading & {
       height: 16px;

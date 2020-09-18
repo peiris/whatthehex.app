@@ -15,6 +15,7 @@
     "notistack": "^0.9.17",
     "rc-tabs": "^11.4.1",
     "react": "^16.13.1",
+    "react-beautiful-dnd": "^13.0.0",
     "react-color": "^2.18.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
@@ -22,10 +23,12 @@
     "react-redux": "^7.2.0",
     "react-responsive": "^8.0.3",
     "react-scripts": "3.4.1",
+    "react-sortablejs": "^2.0.11",
     "react-swipeable-views": "^0.13.9",
     "react-syntax-highlighter": "^12.2.1",
     "react-toast-notifications": "^2.4.0",
-    "remixicon": "^2.5.0"
+    "remixicon": "^2.5.0",
+    "use-state-with-callback": "^1.0.18"
   },
   "scripts": {
     "start": "react-scripts start",
