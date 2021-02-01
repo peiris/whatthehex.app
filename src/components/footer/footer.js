@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className={'footer'}>
       <div className="container">
         <span className="footer__love">
-          Made with <i className="ri-heart-3-fill"></i> for colors by <a href="https://twitter.com/peiris__">Kasun</a>
+          Made with <i className="ri-heart-3-fill"></i> for colors by <a href="https://twitter.com/khpeiris">Kasun</a>
         </span>
       </div>
     </footer>
