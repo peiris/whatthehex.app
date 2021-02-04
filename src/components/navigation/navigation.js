@@ -102,37 +102,38 @@ const Navigation = () => {
             : 120,
         }}
       >
-        {!state.isSidebarOpen && (
-          <div ref={dropdownRef}>
-            <Button
-              className="feedback-wrapper__button"
-              isSmall={true}
-              text="Feedback"
-              icon={"ri-send-plane-fill"}
-              onClick={() => setShowFeedBackForm(!showFeedBackForm)}
-              ref={dropdownButtonRef}
-            />
+        <div ref={dropdownRef}>
+          <Button
+            className="feedback-wrapper__button"
+            isSmall={true}
+            text="Feedback"
+            icon={"ri-send-plane-fill"}
+            onClick={() => setShowFeedBackForm(!showFeedBackForm)}
+            ref={dropdownButtonRef}
+            style={{
+              display: isMobile && state.isSidebarOpen ? "none" : "inline-flex",
+            }}
+          />
 
-            {showFeedBackForm && (
-              <div className="feedback__form">
-                <label>FeedBack</label>
-                <textarea
-                  onChange={(e) => setMessage(e.target.value)}
-                  autoFocus
-                  placeholder="Your feedback..."
-                  value={message}
-                />
+          {showFeedBackForm && (
+            <div className="feedback__form">
+              <label>FeedBack</label>
+              <textarea
+                onChange={(e) => setMessage(e.target.value)}
+                autoFocus
+                placeholder="Your feedback..."
+                value={message}
+              />
 
-                <Button
-                  text={sending ? "Sending..." : "Send Feedback"}
-                  icon={"ri-send-plane-fill"}
-                  onClick={submitFeedback}
-                  disabled={sending || !message || message.length < 4}
-                />
-              </div>
-            )}
-          </div>
-        )}
+              <Button
+                text={sending ? "Sending..." : "Send Feedback"}
+                icon={"ri-send-plane-fill"}
+                onClick={submitFeedback}
+                disabled={sending || !message || message.length < 4}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );
