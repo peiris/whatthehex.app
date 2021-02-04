@@ -129,7 +129,7 @@ const ColorCard = (props) => {
           <LabelChip
             label={"CSS"}
             value={`--${colorObj.variable}: ${
-              colorObj.requested.charAt(0) === "#"
+              colorObj.requested && colorObj.requested.charAt(0) === "#"
                 ? colorObj.requested
                 : `#${colorObj.requested}`
             }`}
@@ -137,7 +137,7 @@ const ColorCard = (props) => {
           <LabelChip
             label={"SCSS"}
             value={`$${digitCheck(colorObj.variable)}: ${
-              colorObj.requested.charAt(0) === "#"
+              colorObj.requested && colorObj.requested.charAt(0) === "#"
                 ? colorObj.requested
                 : `#${colorObj.requested}`
             }`}
