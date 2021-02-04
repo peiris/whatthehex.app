@@ -30,8 +30,11 @@ function ColorChip({ isSidebar, ...props }) {
     <div className={classNames}>
       <span
         className="color-chip__preview"
-        style={{ backgroundColor: colorHex }}
-      ></span>
+        style={{
+          backgroundColor:
+            colorHex.charAt(0) === "#" ? colorHex : `#${colorHex}`,
+        }}
+      />
       <div className="color-chip__data">
         {!isSidebar && (
           <CopyToClipboard
