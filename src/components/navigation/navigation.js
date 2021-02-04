@@ -117,7 +117,7 @@ const Navigation = () => {
 
           {showFeedBackForm && (
             <div className="feedback__form">
-              <label>FeedBack</label>
+              <label>Feature requests, bugs, or Just say anything...</label>
               <textarea
                 onChange={(e) => setMessage(e.target.value)}
                 autoFocus
@@ -129,7 +129,7 @@ const Navigation = () => {
                 text={sending ? "Sending..." : "Send Feedback"}
                 icon={"ri-send-plane-fill"}
                 onClick={submitFeedback}
-                disabled={sending || !message || message.length < 4}
+                disabled={sending || !message || message.length < 1}
               />
             </div>
           )}
