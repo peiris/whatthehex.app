@@ -128,11 +128,19 @@ const ColorCard = (props) => {
           <LabelChip label={"RGB"} value={`rgb(${colorObj.rgb})`} />
           <LabelChip
             label={"CSS"}
-            value={`--${colorObj.variable}: ${colorObj.requested}`}
+            value={`--${colorObj.variable}: ${
+              colorObj.requested.charAt(0) === "#"
+                ? colorObj.requested
+                : `#${colorObj.requested}`
+            }`}
           />
           <LabelChip
             label={"SCSS"}
-            value={`$${digitCheck(colorObj.variable)}: ${colorObj.requested}`}
+            value={`$${digitCheck(colorObj.variable)}: ${
+              colorObj.requested.charAt(0) === "#"
+                ? colorObj.requested
+                : `#${colorObj.requested}`
+            }`}
           />
         </div>
 
