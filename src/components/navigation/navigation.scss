@@ -1,12 +1,12 @@
 .navigation {
-  position: absolute;
-  z-index: 99999;
-  left: 0;
-  right: 0;
   display: flex;
   justify-content: flex-end;
-  width: 100vw;
+  left: 0;
+  position: absolute;
+  right: 0;
   top: 0;
+  width: 100vw;
+  z-index: 99999;
 
   /* Fixed */
   &.is-fixed {
@@ -18,5 +18,78 @@
     position: absolute;
     right: 20px;
     top: 20px;
+  }
+
+  /* Feedback */
+  .feedback-wrapper {
+    display: flex;
+    position: absolute;
+    top: 20px;
+
+    /* Button */
+    &__button {
+      background-color: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: #000000;
+
+      &:hover {
+        border-color: #000;
+      }
+    }
+
+    /* Form */
+    .feedback__form {
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      position: absolute;
+      right: 0;
+      top: 40px;
+      width: 300px;
+
+      label {
+        font-size: 12px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+
+      textarea {
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 4px;
+        font-size: 14px;
+        height: 100px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+        max-width: 100%;
+        min-width: 100%;
+        padding: 16px;
+        transition: all 0.25s ease-in-out 0;
+
+        &:focus {
+          border-color: #000;
+          outline: none;
+        }
+      }
+
+      button {
+        appearance: none;
+        background-color: #000;
+        border: 0;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500;
+        outline: none;
+        padding: 8px;
+        cursor: pointer;
+
+        &:active {
+          background-color: #0d51ff;
+        }
+      }
+    }
   }
 }
