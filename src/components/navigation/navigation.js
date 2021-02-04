@@ -117,7 +117,7 @@ const Navigation = () => {
 
           {showFeedBackForm && (
             <div className="feedback__form">
-              <label>Feature requests, bugs, or Just say anything...</label>
+              <label>Feature requests, bugs, or Just say anything.</label>
               <textarea
                 onChange={(e) => setMessage(e.target.value)}
                 autoFocus
