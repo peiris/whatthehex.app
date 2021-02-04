@@ -18,6 +18,33 @@
     position: absolute;
     right: 20px;
     top: 20px;
+    z-index: 9999;
+  }
+
+  /* Backdrop */
+  .feedback__backdrop {
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -1;
+
+    &:before {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: var(--color-N0);
+      background-color: hsla(0, 0%, 100%, 0.8);
+      bottom: 0;
+      content: "";
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+    }
   }
 
   /* Feedback */
@@ -51,6 +78,14 @@
       right: 0;
       top: 40px;
       width: 300px;
+
+      @media screen and (max-width: 480px) {
+        left: 30px;
+        position: fixed;
+        right: 30px;
+        top: 60px;
+        width: auto;
+      }
 
       label {
         font-size: 12px;

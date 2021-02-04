@@ -90,6 +90,10 @@ const Navigation = () => {
         onClick={(e) => onSidebarToggleButtonClick()}
       />
 
+      {isMobile && showFeedBackForm && (
+        <span className="feedback__backdrop"></span>
+      )}
+
       <div
         className="feedback-wrapper"
         style={{
@@ -98,35 +102,37 @@ const Navigation = () => {
             : 120,
         }}
       >
-        <div ref={dropdownRef}>
-          <Button
-            className="feedback-wrapper__button"
-            isSmall={true}
-            text="Feedback"
-            icon={"ri-send-plane-fill"}
-            onClick={() => setShowFeedBackForm(!showFeedBackForm)}
-            ref={dropdownButtonRef}
-          />
+        {!state.isSidebarOpen && (
+          <div ref={dropdownRef}>
+            <Button
+              className="feedback-wrapper__button"
+              isSmall={true}
+              text="Feedback"
+              icon={"ri-send-plane-fill"}
+              onClick={() => setShowFeedBackForm(!showFeedBackForm)}
+              ref={dropdownButtonRef}
+            />
 
-          {showFeedBackForm && (
-            <div className="feedback__form">
-              <label>FeedBack</label>
-              <textarea
-                onChange={(e) => setMessage(e.target.value)}
-                autoFocus
-                placeholder="Your feedback..."
-                value={message}
-              />
+            {showFeedBackForm && (
+              <div className="feedback__form">
+                <label>FeedBack</label>
+                <textarea
+                  onChange={(e) => setMessage(e.target.value)}
+                  autoFocus
+                  placeholder="Your feedback..."
+                  value={message}
+                />
 
-              <Button
-                text={sending ? "Sending..." : "Send Feedback"}
-                icon={"ri-send-plane-fill"}
-                onClick={submitFeedback}
-                disabled={sending || !message || message.length < 4}
-              />
-            </div>
-          )}
-        </div>
+                <Button
+                  text={sending ? "Sending..." : "Send Feedback"}
+                  icon={"ri-send-plane-fill"}
+                  onClick={submitFeedback}
+                  disabled={sending || !message || message.length < 4}
+                />
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </nav>
   );
