@@ -22,7 +22,7 @@ transporter.verify(function (error, success) {
   }
 });
 
-app.post("/api/access", (req, res, next) => {
+app.post("/api/access", jsonParser, (req, res, next) => {
   const mail = {
     from: "WhatTheHex Feedback <whatthehex@karapincha.io>",
     to: "hello@karapincha.io",
