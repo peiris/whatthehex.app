@@ -1,4 +1,3 @@
-import { ReactComponent as PickerIcon } from "assets/icons/picker.svg";
 import React, { useContext, useRef } from "react";
 import { SketchPicker } from "react-color";
 import { Context } from "../../store";
@@ -11,10 +10,16 @@ const SearchInput = (props) => {
   const [state, dispatch] = useContext(Context);
 
   const handleChangeComplete = (color) => {
-    dispatch({ type: "SET_SELECTED_COLOR", payload: color.hex });
+    let hex = color.hex;
+
+    if (hex.charAt(0) === "#") {
+      hex = hex.substr(1);
+    }
+
+    dispatch({ type: "SET_SELECTED_COLOR", payload: hex });
     dispatch({
       type: "SET_SELECTED_COLOR_OBJECT",
-      payload: generateColorDetails(color.hex),
+      payload: generateColorDetails(hex),
     });
   };
 
@@ -30,18 +35,16 @@ const SearchInput = (props) => {
   };
 
   const _onInputChange = (value) => {
-    if (value) {
-      dispatch({
-        type: "SET_SELECTED_COLOR_OBJECT",
-        payload: generateColorDetails(inputEl.current.value),
-      });
-      dispatch({ type: "SET_SELECTED_COLOR", payload: value });
+    dispatch({
+      type: "SET_SELECTED_COLOR_OBJECT",
+      payload: generateColorDetails(inputEl.current.value),
+    });
+    dispatch({ type: "SET_SELECTED_COLOR", payload: value });
 
-      if (state.savedColors.filter((e) => e.requested === value).length > 0) {
-        dispatch({ type: "SET_IS_SAVED_COLOR", payload: true });
-      } else {
-        dispatch({ type: "SET_IS_SAVED_COLOR", payload: false });
-      }
+    if (state.savedColors.filter((e) => e.requested === value).length > 0) {
+      dispatch({ type: "SET_IS_SAVED_COLOR", payload: true });
+    } else {
+      dispatch({ type: "SET_IS_SAVED_COLOR", payload: false });
     }
   };
 
@@ -62,11 +65,12 @@ const SearchInput = (props) => {
       onSubmit={_onFormSubmit}
       className={`search-input ${props.isHero ? "search-input--hero" : ""}`}
     >
+      <span className="search-input__prefix">#</span>
       <input
         type="text"
         className="form-control search-input__form-control"
         placeholder="Enter your hex colour code"
-        value={state.selectedColor}
+        value={state.selectedColor || ""}
         ref={inputEl}
         onChange={(e) => _onInputChange(e.target.value)}
         onClick={_hidePicker}

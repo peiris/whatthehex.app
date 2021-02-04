@@ -4,18 +4,19 @@ import Button from "components/button/button";
 import ColorChip from "components/color-chip/color-chip";
 import LabelChip from "components/label-chip/label-chip";
 import { generateColorDetails } from "functions/what-the-hex";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Context } from "store";
 
 const ColorCard = (props) => {
   const [state, dispatch] = useContext(Context);
+  const [colorType, setColorType] = useState();
+  const [colorObj, setColorObj] = useState(state.selectedColorObj);
+  const [validColor, setValidColor] = useState(true);
 
   const isMobile = useMediaQuery({
     query: "(max-width: 480px)",
   });
-
-  const colorObj = state.selectedColorObj;
 
   const digitCheck = (variable) => {
     if (variable !== undefined && variable.match(/^\d/)) {
@@ -25,12 +26,27 @@ const ColorCard = (props) => {
     }
   };
 
-  const colorType = colorObj.isExact ? "Exact color" : "Closest color";
+  useEffect(() => {
+    console.log(colorObj);
+
+    if (colorObj.message && colorObj.message === "Invalid hex code") {
+      setValidColor(false);
+    } else {
+      setValidColor(true);
+    }
+
+    setColorType(colorObj.isExact ? "Exact color" : "Closest color");
+  }, [colorObj]);
+
+  useEffect(() => {
+    setColorObj(state.selectedColorObj);
+  }, [state.selectedColorObj]);
 
   const refreshColor = () => {
-    let randomColor = "#000000".replace(/0/g, function () {
+    let randomColor = "000000".replace(/0/g, function () {
       return (~~(Math.random() * 16)).toString(16);
     });
+
     dispatch({ type: "SET_SELECTED_COLOR", payload: randomColor });
     dispatch({
       type: "SET_SELECTED_COLOR_OBJECT",
@@ -68,89 +84,96 @@ const ColorCard = (props) => {
     }
   };
 
-  return (
-    <article
-      className={`color-card ${
-        colorObj.variable === undefined ? "is-loading" : ""
-      }`}
-    >
-      <div className="color-card__top">
-        <ColorChip
-          colorHex={colorObj.requested}
-          colorName={colorObj.name}
-          colorNameType={colorType}
-          colorReturned={colorObj.returned}
-          isInCard={true}
-        />
+  if (validColor) {
+    return (
+      <article className={`color-card`}>
+        <div className="color-card__top">
+          <ColorChip
+            colorHex={colorObj.requested}
+            colorName={colorObj.name}
+            colorNameType={colorType}
+            colorReturned={colorObj.returned}
+            isInCard={true}
+          />
 
-        <div className="color-card__actions">
-          {!isMobile && (
+          <div className="color-card__actions">
+            {!isMobile && (
+              <Button
+                icon={"ri-shuffle-line"}
+                style={{ marginRight: "8px" }}
+                onClick={refreshColor}
+              />
+            )}
+
+            {!isMobile && !disableSaveButton(colorObj) && (
+              <Button
+                icon={"ri-heart-add-line"}
+                text={"Save"}
+                onClick={saveColor}
+              />
+            )}
+
+            {!isMobile && disableSaveButton(colorObj) && (
+              <Button
+                icon={"ri-check-double-fill"}
+                text={"Saved"}
+                isReadOnly={true}
+              />
+            )}
+          </div>
+        </div>
+
+        <div className={`color-card__bottom ${isMobile && "mb-28"}`}>
+          <LabelChip label={"String"} value={`${colorObj.variable}`} />
+          <LabelChip label={"RGB"} value={`rgb(${colorObj.rgb})`} />
+          <LabelChip
+            label={"CSS"}
+            value={`--${colorObj.variable}: ${colorObj.requested}`}
+          />
+          <LabelChip
+            label={"SCSS"}
+            value={`$${digitCheck(colorObj.variable)}: ${colorObj.requested}`}
+          />
+        </div>
+
+        {isMobile && (
+          <div className="color-card__bottom__actions">
             <Button
               icon={"ri-shuffle-line"}
               style={{ marginRight: "8px" }}
               onClick={refreshColor}
+              text={"Random"}
             />
-          )}
 
-          {!isMobile && !disableSaveButton(colorObj) && (
-            <Button
-              icon={"ri-heart-add-line"}
-              text={"Save"}
-              onClick={saveColor}
-            />
-          )}
+            {!disableSaveButton(colorObj) && (
+              <Button
+                icon={"ri-heart-add-line"}
+                text={"Save"}
+                onClick={saveColor}
+              />
+            )}
 
-          {!isMobile && disableSaveButton(colorObj) && (
-            <Button
-              icon={"ri-check-double-fill"}
-              text={"Saved"}
-              isReadOnly={true}
-            />
-          )}
+            {disableSaveButton(colorObj) && (
+              <Button
+                icon={"ri-check-double-fill"}
+                text={"Saved"}
+                isReadOnly={true}
+              />
+            )}
+          </div>
+        )}
+      </article>
+    );
+  } else {
+    return (
+      <article className={`color-card`}>
+        <div className="color-card__invalid">
+          <i class="ri-error-warning-fill"></i>
+          <span>Invalid color code</span>
         </div>
-      </div>
-
-      <div className={`color-card__bottom ${isMobile && "mb-28"}`}>
-        <LabelChip label={"String"} value={`${colorObj.variable}`} />
-        <LabelChip label={"RGB"} value={`rgb(${colorObj.rgb})`} />
-        <LabelChip
-          label={"CSS"}
-          value={`--${colorObj.variable}: ${colorObj.requested}`}
-        />
-        <LabelChip
-          label={"SCSS"}
-          value={`$${digitCheck(colorObj.variable)}: ${colorObj.requested}`}
-        />
-      </div>
-
-      {isMobile && (
-        <div className="color-card__bottom__actions">
-          <Button
-            icon={"ri-shuffle-line"}
-            style={{ marginRight: "8px" }}
-            onClick={refreshColor}
-            text={"Random"}
-          />
-
-          {!disableSaveButton(colorObj) && (
-            <Button
-              icon={"ri-heart-add-line"}
-              text={"Save"}
-              onClick={saveColor}
-            />
-          )}
-
-          {disableSaveButton(colorObj) && (
-            <Button
-              icon={"ri-check-double-fill"}
-              text={"Saved"}
-              isReadOnly={true}
-            />
-          )}
-        </div>
-      )}
-    </article>
-  );
+      </article>
+    );
+  }
 };
 
 export default ColorCard;

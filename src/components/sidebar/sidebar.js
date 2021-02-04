@@ -47,14 +47,24 @@ const Sidebar = () => {
   };
 
   const onClickSavedColorChip = (color) => {
-    // console.log(color);
-    let updatedColorObject = { ...color, isSelected: true };
+    let { requested } = color;
+    let { returned } = color;
+
+    if (requested.charAt(0) === "#") {
+      requested = requested.substr(1);
+    }
+
+    if (returned.charAt(0) === "#") {
+      returned = returned.substr(1);
+    }
+
+    let updatedColorObject = { ...color, requested, isSelected: true };
 
     dispatch({
       type: "SET_SELECTED_COLOR_OBJECT",
       payload: updatedColorObject,
     });
-    dispatch({ type: "SET_SELECTED_COLOR", payload: color.requested });
+    dispatch({ type: "SET_SELECTED_COLOR", payload: requested });
   };
 
   const onClickColorChipAction = (e, color) => {
@@ -161,6 +171,7 @@ const Sidebar = () => {
                     colorNameType={color.requested}
                     isSmall={true}
                     onClick={(e) => onClickColorChipAction(e, color)}
+                    isSidebar={true}
                   />
                 </div>
               ))}

@@ -1,24 +1,32 @@
 // Search input styles
 .search-input {
-  position: relative;
   display: flex;
+  position: relative;
   width: 100%;
 
+  &__prefix {
+    left: 18px;
+    position: absolute;
+    top: 10px;
+    z-index: 99999;
+  }
+
   &__form-control {
-    position: relative;
-    z-index: 9999;
     padding-right: 72px;
+    position: relative;
     width: 100%;
+    z-index: 9999;
+    padding-left: 29px !important;
   }
 
   &__btn {
-    position: absolute;
-    top: 0;
-    right: 10px;
     bottom: 0;
-    z-index: 9999;
-    margin-top: auto;
     margin-bottom: auto;
+    margin-top: auto;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    z-index: 9999;
   }
 
   &--hero {
@@ -26,32 +34,32 @@
   }
 
   &--color-picker {
+    left: 0;
     position: absolute;
     top: 0;
     top: calc(var(--input-height-default) + 20px);
-    left: 0;
-    z-index: 999;
     width: 100%;
+    z-index: 999;
   }
 
   &--overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
+    background-color: transparent;
     bottom: 0;
     left: 0;
-    background-color: transparent;
+    position: fixed;
+    right: 0;
+    top: 0;
   }
 
   .sketch-picker {
-    box-sizing: border-box !important;
-    padding: 16px !important;
-    margin-right: auto;
-    margin-left: auto;
-    width: 260px !important;
-    box-shadow: -1px 4px 40px 5px rgba(0, 0, 0, 0.06) !important;
     border: 0 solid var(--form-control-border-color);
     border-radius: 5px !important;
+    box-shadow: -1px 4px 40px 5px rgba(0, 0, 0, 0.06) !important;
+    box-sizing: border-box !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px !important;
+    width: 260px !important;
 
     .flexbox-fix {
       border-top: 0 !important;
