@@ -9,18 +9,25 @@ import Store from "store";
 ReactGA.initialize("UA-169340778-1");
 ReactGA.pageview("/homepage");
 
-const MyCustomToast = ({ appearance, children }) => <div className="toast-message">{children}</div>;
+const MyCustomToast = ({ appearance, children }) => (
+  <div className="toast-message">{children}</div>
+);
 
 const App = () => {
-	return (
-		<ToastProvider autoDismiss autoDismissTimeout={1500} placement="top-left" components={{ Toast: MyCustomToast }}>
-			<Store>
-				<Navigation />
-				<Home />
-				<Sidebar />
-			</Store>
-		</ToastProvider>
-	);
+  return (
+    <ToastProvider
+      autoDismiss
+      autoDismissTimeout={1500}
+      placement="top-left"
+      components={{ Toast: MyCustomToast }}
+    >
+      <Store>
+        <Navigation />
+        <Home />
+        <Sidebar />
+      </Store>
+    </ToastProvider>
+  );
 };
 
 export default App;
