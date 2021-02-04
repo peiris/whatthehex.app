@@ -8,4 +8,12 @@
   &--logo {
     margin-bottom: 20px;
   }
+
+  svg {
+    @media (prefers-color-scheme: dark) {
+      path {
+        fill: #fff;
+      }
+    }
+  }
 }

@@ -25,6 +25,10 @@
   -moz-user-select: none;
   -ms-user-select: none;
 
+  @media (prefers-color-scheme: dark) {
+    background-color: #0d51ff;
+  }
+
   &__icon {
     font-size: var(--font-size-md);
     & + span {
@@ -45,6 +49,12 @@
     color: #000000;
     background-color: #ffffff;
     border-color: #000000;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #000;
+      border-color: #000;
+      color: #fff;
+    }
   }
 
   /* Small button */

@@ -16,10 +16,18 @@
     -moz-user-select: none;
     -ms-user-select: none;
 
+    @media (prefers-color-scheme: dark) {
+      color: #627098;
+    }
+
     a {
       color: #000000;
       font-weight: 600;
       text-decoration: none;
+
+      @media (prefers-color-scheme: dark) {
+        color: #627098;
+      }
 
       &:hover {
         color: #0d51ff;

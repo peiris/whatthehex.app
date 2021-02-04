@@ -6,7 +6,7 @@
   .is-legacy-mobile & {
     width: 100%;
     overflow: hidden;
-    overflow:hidden;
+    overflow: hidden;
     justify-content: flex-start;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -26,6 +26,10 @@
     background-color: rgba(#000000, 0.08);
     border-radius: 4px;
 
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
+
     .is-mobile & {
       padding-top: 2px;
       padding-right: 8px;
@@ -41,7 +45,13 @@
       overflow: hidden;
       line-height: 80px;
       background: #ebebec;
-      background-image: linear-gradient(to right, #ebebec 0%, #e0e0e2 20%, #ebebec 40%, #ebebec 100%);
+      background-image: linear-gradient(
+        to right,
+        #ebebec 0%,
+        #e0e0e2 20%,
+        #ebebec 40%,
+        #ebebec 100%
+      );
       background-repeat: no-repeat;
       border-radius: 2px;
       animation: placeHolderSwept 1s infinite linear forwards;
@@ -58,7 +68,13 @@
       overflow: hidden;
       line-height: 80px;
       background: #ebebec;
-      background-image: linear-gradient(to right, #ebebec 0%, #e0e0e2 20%, #ebebec 40%, #ebebec 100%);
+      background-image: linear-gradient(
+        to right,
+        #ebebec 0%,
+        #e0e0e2 20%,
+        #ebebec 40%,
+        #ebebec 100%
+      );
       background-repeat: no-repeat;
       border-radius: 2px;
       animation: placeHolderSwept 1s infinite linear forwards;

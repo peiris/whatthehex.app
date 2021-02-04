@@ -7,8 +7,8 @@
 body {
   background-color: #f7faff;
 
-  &.dark-mode {
-    background-color: #2e2e35;
+  @media (prefers-color-scheme: dark) {
+    background-color: #283149;
   }
 }
 

@@ -19,6 +19,14 @@
     z-index: 9999;
     margin-top: auto;
     margin-bottom: auto;
+
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+
+      &:hover {
+        color: #283149;
+      }
+    }
   }
 
   &--hero {

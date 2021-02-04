@@ -11,11 +11,21 @@
 
   &--icon {
     margin-right: 8px;
+
+    @media (prefers-color-scheme: dark) {
+      path {
+        fill: #627098;
+      }
+    }
   }
 
   &--label {
     position: relative;
     top: -2px;
     font-size: var(--font-size-sm);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: #627098;
   }
 }
