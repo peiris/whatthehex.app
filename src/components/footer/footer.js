@@ -1,16 +1,23 @@
-import React from 'react';
-import './footer.scss';
+import React from "react";
+import "./footer.scss";
 
 const Footer = () => {
   return (
-    <footer className={'footer'}>
+    <footer className={"footer"}>
       <div className="container">
         <span className="footer__love">
-          Made with <i className="ri-heart-3-fill"></i> for colors by <a href="https://twitter.com/khpeiris">Kasun</a>
+          Made with <i className="ri-heart-3-fill"></i> for colors by{" "}
+          <a
+            href="https://twitter.com/khpeiris"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Peiris
+          </a>
         </span>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
