@@ -22,7 +22,7 @@ transporter.verify(function (error, success) {
   }
 });
 
-app.post("/access", jsonParser, (req, res, next) => {
+app.post("/api/access", (req, res, next) => {
   const mail = {
     from: "WhatTheHex Feedback <whatthehex@karapincha.io>",
     to: "hello@karapincha.io",
@@ -42,18 +42,6 @@ app.post("/access", jsonParser, (req, res, next) => {
       });
     }
   });
-});
-
-app.get("/api", (req, res) => {
-  const path = `/api/item/${v4()}`;
-  res.setHeader("Content-Type", "text/html");
-  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
-  res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
-});
-
-app.get("/api/item/:slug", (req, res) => {
-  const { slug } = req.params;
-  res.end(`Item: ${slug}`);
 });
 
 module.exports = app;
