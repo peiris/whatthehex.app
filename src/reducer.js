@@ -55,6 +55,11 @@ const Reducer = (state, action) => {
         ...state,
         showScssCODE: action.payload
       };
+    case 'SET_LESS_CODE_VISIBILITY':
+      return {
+        ...state,
+        showLessCODE: action.payload
+      };
     case 'SET_IS_SAVED_COLOR':
       return {
         ...state,

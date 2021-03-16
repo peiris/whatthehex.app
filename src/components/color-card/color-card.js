@@ -142,6 +142,14 @@ const ColorCard = (props) => {
                 : `#${colorObj.requested}`
             }`}
           />
+          <LabelChip
+            label={"LESS"}
+            value={`@${digitCheck(colorObj.variable)}: ${
+              colorObj.requested && colorObj.requested.charAt(0) === "#"
+                ? colorObj.requested
+                : `#${colorObj.requested}`
+            }`}
+          />
         </div>
 
         {isMobile && (

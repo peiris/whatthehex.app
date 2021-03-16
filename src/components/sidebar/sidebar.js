@@ -38,11 +38,15 @@ const Sidebar = () => {
   if (state.showScssCODE) {
     heading = "SCSS";
   }
+  if (state.showLessCODE) {
+    heading = "LESS";
+  }
 
   const handleButtonClick = (stateType) => {
     dispatch({ type: "SET_COLOR_PALETTE_VISIBILITY", payload: false });
     dispatch({ type: "SET_CSS_CODE_VISIBILITY", payload: false });
     dispatch({ type: "SET_SCSS_CODE_VISIBILITY", payload: false });
+    dispatch({ type: "SET_LESS_CODE_VISIBILITY", payload: false });
     dispatch({ type: stateType, payload: true });
   };
 
@@ -93,12 +97,12 @@ const Sidebar = () => {
     }
   };
 
-  const saveSortedList = () => {
-    console.log("Update sorted list");
-    console.log(sortState);
-    // dispatch({ type: "SET_SAVED_COLORS", payload: sortState });
-    // localStorage.setItem("savedColors", JSON.stringify(sortState));
-  };
+  // const saveSortedList = () => {
+  //   console.log("Update sorted list");
+  //   console.log(sortState);
+  //   // dispatch({ type: "SET_SAVED_COLORS", payload: sortState });
+  //   // localStorage.setItem("savedColors", JSON.stringify(sortState));
+  // };
 
   // const reorder = (list, startIndex, endIndex) => {
   // 	const result = Array.from(list);
@@ -138,6 +142,13 @@ const Sidebar = () => {
               onClick={(e) => handleButtonClick("SET_SCSS_CODE_VISIBILITY")}
             >
               SASS
+            </button>
+
+            <button
+              className={state.showLessCODE ? "active" : ""}
+              onClick={(e) => handleButtonClick("SET_LESS_CODE_VISIBILITY")}
+            >
+              LESS
             </button>
           </div>
         </div>
@@ -217,6 +228,21 @@ const Sidebar = () => {
                 {state.savedColors
                   .map((color) => {
                     let string = `$${digitCheck(color.variable)}: ${
+                      color.requested
+                    }; \n`;
+                    return string;
+                  })
+                  .join("")}
+              </SyntaxHighlighter>
+            </div>
+          )}
+
+          {state.showLessCODE && state.savedColors.length > 0 && (
+            <div className="sidebar--code sidebar--code--less">
+              <SyntaxHighlighter language="less" style={vs}>
+                {state.savedColors
+                  .map((color) => {
+                    let string = `@${digitCheck(color.variable)}: ${
                       color.requested
                     }; \n`;
                     return string;
