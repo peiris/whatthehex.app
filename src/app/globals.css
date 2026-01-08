@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --input-height-default: 48px;
+  --sidebar-width: 320px;
+}
+
+body {
+  @apply bg-[#f7faff] font-sans;
+}
+
+body.dark-mode {
+  @apply bg-[#2e2e35];
+}
+
+::selection {
+  @apply bg-[#0d51ff] text-white;
+}
+
+::-moz-selection {
+  background: #0d51ff;
+  color: #ffffff;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@keyframes placeHolderSwept {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
