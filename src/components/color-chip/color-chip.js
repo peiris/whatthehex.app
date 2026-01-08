@@ -1,7 +1,6 @@
 import "./color-chip.scss";
 
-import { withStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
+import Tooltip from "components/tooltip/tooltip";
 import Button from "components/button/button";
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -18,13 +17,6 @@ function ColorChip({ isSidebar, ...props }) {
   if (props.isSmall) {
     classNames += ` color-chip--sm`;
   }
-
-  const CustomTooltip = withStyles((theme) => ({
-    tooltip: {
-      backgroundColor: "rgb(0,0,0)",
-      fontSize: 12,
-    },
-  }))(Tooltip);
 
   return (
     <div className={classNames}>
@@ -46,28 +38,20 @@ function ColorChip({ isSidebar, ...props }) {
               });
             }}
           >
-            <CustomTooltip
-              title={"Click to Copy to Clipboard"}
-              aria-label={colorName}
-              placement="top"
-            >
+            <Tooltip title="Click to Copy to Clipboard" placement="top">
               <h2 className="color-chip__data__title">{colorName}</h2>
-            </CustomTooltip>
+            </Tooltip>
           </CopyToClipboard>
         )}
 
         {isSidebar && <h2 className="color-chip__data__title">{colorName}</h2>}
 
         {!isSidebar ? (
-          <CustomTooltip
-            title={colorReturned}
-            aria-label={colorReturned}
-            placement="bottom-end"
-          >
+          <Tooltip title={colorReturned} placement="bottom-end">
             <span className="color-chip__data__label">
               {colorNameType} <i className="ri-question-line"></i>
             </span>
-          </CustomTooltip>
+          </Tooltip>
         ) : (
           <span
             className="color-chip__data__label"

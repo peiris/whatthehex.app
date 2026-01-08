@@ -1,7 +1,6 @@
 import "./label-chip.scss";
 
-import { withStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
+import Tooltip from "components/tooltip/tooltip";
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useToasts } from "react-toast-notifications";
@@ -17,13 +16,6 @@ function LabelChip(props) {
     className += ` label-chip--left-align`;
   }
 
-  const CustomTooltip = withStyles((theme) => ({
-    tooltip: {
-      backgroundColor: "rgb(0,0,0)",
-      fontSize: 12,
-    },
-  }))(Tooltip);
-
   return (
     <div className={className}>
       <label className="label-chip__label noselect">{label}</label>
@@ -37,13 +29,9 @@ function LabelChip(props) {
           });
         }}
       >
-        <CustomTooltip
-          title={`Click to Copy to Clipboard`}
-          aria-label={label}
-          placement="top"
-        >
+        <Tooltip title="Click to Copy to Clipboard" placement="top">
           <span className="label-chip__value">{value}</span>
-        </CustomTooltip>
+        </Tooltip>
       </CopyToClipboard>
     </div>
   );
