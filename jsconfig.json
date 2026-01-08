@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "functions/*": ["src/functions/*"],
+      "styles/*": ["src/styles/*"],
+      "store": ["src/store.js"],
+      "reducer": ["src/reducer.js"]
+    }
   },
-  "include": ["src"]
+  "include": ["pages/**/*", "src/**/*"]
 }
