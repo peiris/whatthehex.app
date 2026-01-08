@@ -97,10 +97,6 @@ function generateColorDetails(hexval) {
     let convertSpaceToHyphen = removeSpecialChars
       .replace(/\s+/g, "-")
       .toLowerCase();
-    let convertSpaceToNone = removeSpecialChars
-      .replace(/\s+/g, "")
-      .toLowerCase();
-    // let removeSpecialChars = convertSpaceToHyphen.replace(/[^a-zA-Z0-9-]/g, "");
 
     return {
       id: Math.ceil(Math.random() * 10),
